@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPad対応ゲーム</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="gameContainer">
+    <!-- ゲーム情報表示エリア -->
+    <div id="gameInfo">
+      <div id="scoreDisplay">
+        <span>スコア: <span id="score">0</span></span>
+        <span>ステージ: <span id="stage">1</span></span>
+      </div>
+      <div id="starDisplay">
+        <span id="star1" class="star">⭐</span>
+        <span id="star2" class="star">⭐</span>
+        <span id="star3" class="star">⭐</span>
+      </div>
+    </div>
+    
+    <!-- ゲーム画面 -->
+    <div id="gameArea">
+      <div id="column1" class="column"></div>
+      <div id="column2" class="column"></div>
+      <div id="column3" class="column"></div>
+      <div id="column4" class="column"></div>
+    </div>
+    
+    <!-- ゲームオーバー画面 -->
+    <div id="gameOverScreen" class="hidden">
+      <h2>ゲームオーバー</h2>
+      <p>最終スコア: <span id="finalScore">0</span></p>
+      <p>最終ステージ: <span id="finalStage">1</span></p>
+      <button id="restartBtn">再スタート</button>
+    </div>
+    
+    <!-- スタート画面 -->
+    <div id="startScreen">
+      <h1>落下長方形ゲーム</h1>
+      <p>落ちてくる長方形をタップしてキャッチしよう！</p>
+      <p>長方形以外をタップしたり、長方形を逃すとゲームオーバー</p>
+      <button id="startBtn">ゲーム開始</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
