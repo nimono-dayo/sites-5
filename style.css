@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+#gameContainer {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* ゲーム情報表示エリア */
+#gameInfo {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#scoreDisplay {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+#starDisplay {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 24px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.star.earned {
+  opacity: 1;
+  animation: starGlow 0.5s ease;
+}
+
+@keyframes starGlow {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ゲーム画面 */
+#gameArea {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+}
+
+.column {
+  flex: 1;
+  height: 100%;
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.column:last-child {
+  border-right: none;
+}
+
+/* 落下する長方形 */
+.rectangle {
+  position: absolute;
+  width: 80%;
+  height: 60px;
+  left: 10%;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.rectangle:hover {
+  transform: scale(1.05);
+}
+
+.rectangle.clicked {
+  background: linear-gradient(45deg, #00d2d3, #54a0ff);
+  animation: rectangleClick 0.2s ease;
+}
+
+@keyframes rectangleClick {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* スタート画面 */
+#startScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  text-align: center;
+  padding: 20px;
+}
+
+#startScreen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#startScreen p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+#startBtn, #restartBtn {
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+#startBtn:hover, #restartBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ゲームオーバー画面 */
+#gameOverScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  text-align: center;
+  padding: 20px;
+}
+
+#gameOverScreen h2 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #ff6b6b;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#gameOverScreen p {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  #gameInfo {
+    width: 95%;
+    padding: 8px 15px;
+  }
+  
+  #scoreDisplay {
+    gap: 15px;
+    font-size: 0.9rem;
+  }
+  
+  #startScreen h1 {
+    font-size: 2rem;
+  }
+  
+  #startScreen p {
+    font-size: 1rem;
+  }
+  
+  .rectangle {
+    height: 50px;
+  }
+}
